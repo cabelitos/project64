@@ -10,4 +10,5 @@ pkg_check_modules(SDL2 REQUIRED sdl2)
 
 add_subdirectory(Common)
 add_subdirectory(Settings)
+add_subdirectory(3rdParty)
 add_subdirectory(Project64-audio)
