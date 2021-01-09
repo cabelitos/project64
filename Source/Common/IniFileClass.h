@@ -6,6 +6,7 @@
 
 #include "FileClass.h"
 #include "CriticalSection.h"
+#include "Platform.h"
 #include <string>
 #include <map>
 #include <vector>

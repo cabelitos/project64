@@ -100,7 +100,7 @@ void CSettingTypeRDBSaveChip::Save (uint32_t /*Index*/, uint32_t Value )
 {
     switch (Value)
     {
-    case SaveChip_Auto:       m_SettingsIniFile->SaveString(m_SectionIdent->c_str(),m_KeyName.c_str(),"First Save Type"); break;
+    case (uint32_t)SaveChip_Auto:       m_SettingsIniFile->SaveString(m_SectionIdent->c_str(),m_KeyName.c_str(),"First Save Type"); break;
     case SaveChip_Eeprom_4K:  m_SettingsIniFile->SaveString(m_SectionIdent->c_str(),m_KeyName.c_str(),"4kbit Eeprom"); break;
     case SaveChip_Eeprom_16K: m_SettingsIniFile->SaveString(m_SectionIdent->c_str(),m_KeyName.c_str(),"16kbit Eeprom"); break;
     case SaveChip_Sram:       m_SettingsIniFile->SaveString(m_SectionIdent->c_str(),m_KeyName.c_str(),"Sram"); break;

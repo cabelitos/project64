@@ -889,6 +889,7 @@ uint32_t CN64Disk::LBAToVZone(uint32_t lba)
             return vzone;
         }
     }
+    return 0;
 };
 
 uint32_t CN64Disk::LBAToByte(uint32_t lba, uint32_t nlbas)

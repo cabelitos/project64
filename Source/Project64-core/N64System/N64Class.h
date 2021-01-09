@@ -28,6 +28,7 @@
 #include "Mips/TLBClass.h"
 #include "FramePerSecondClass.h"
 #include "SpeedLimiterClass.h"
+#include "SystemGlobals.h"
 
 typedef std::list<SystemEvent>   EVENT_LIST;
 

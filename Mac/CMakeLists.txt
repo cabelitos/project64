@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.10)
 
 project(Project64 CXX)
 
+set(CMAKE_CXX_STANDARD 14)
+
 find_package(PkgConfig REQUIRED)
 
 set(PROJECT64_INCLUDE_DIRS ${PROJECT_SOURCE_DIR}/../Source)
@@ -12,3 +14,4 @@ add_subdirectory(Common)
 add_subdirectory(Settings)
 add_subdirectory(3rdParty)
 add_subdirectory(Project64-audio)
+add_subdirectory(Project64-core)

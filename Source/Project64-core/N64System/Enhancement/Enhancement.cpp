@@ -9,10 +9,11 @@
 *                                                                           *
 ****************************************************************************/
 #include "stdafx.h"
-#include <Project64-core\N64System\Enhancement\Enhancement.h>
-#include <Project64-core\Settings\SettingType\SettingsType-GameSetting.h>
-#include <Project64-core\N64System\SystemGlobals.h>
-#include <Project64-core\N64System\N64Class.h>
+#include <Project64-core/N64System/Enhancement/Enhancement.h>
+#include <Project64-core/Settings/SettingType/SettingsType-GameSetting.h>
+#include <Project64-core/N64System/SystemGlobals.h>
+#include <Project64-core/N64System/N64Class.h>
+#include <Common/Platform.h>
 
 #pragma warning(disable:4996)
 
@@ -160,7 +161,7 @@ CEnhancement::CEnhancement(const char * Ident, const char * Entry) :
         }
         Key.resize(Seperator);
 
-        if (stricmp(Key.c_str(), "Note") == 0)
+        if (_stricmp(Key.c_str(), "Note") == 0)
         {
             m_Note = &Pos[1];
         }

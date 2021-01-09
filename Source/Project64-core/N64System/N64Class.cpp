@@ -30,6 +30,9 @@
 #if defined(ANDROID)
 #include <utime.h>
 #endif
+#ifdef __APPLE__
+#include <sys/time.h>
+#endif
 
 #pragma warning(disable:4355) // Disable 'this' : used in base member initializer list
 
@@ -1350,9 +1353,9 @@ void CN64System::SyncCPU(CN64System * const SecondCPU)
         }
     }
 
-    if (m_Random.get_state() != SecondCPU->m_Random.get_state()) 
+    if (m_Random.get_state() != SecondCPU->m_Random.get_state())
     {
-        ErrorFound = true; 
+        ErrorFound = true;
     }
     if (m_TLB != SecondCPU->m_TLB) { ErrorFound = true; }
     if (m_Reg.m_FPCR[0] != SecondCPU->m_Reg.m_FPCR[0]) { ErrorFound = true; }
@@ -1386,7 +1389,7 @@ void CN64System::SyncCPU(CN64System * const SecondCPU)
 
     if (bFastSP() && m_Recomp)
     {
-        if (m_Recomp->MemoryStackPos() != (uint32_t)(m_MMU_VM.Rdram() + (m_Reg.m_GPR[29].W[0] & 0x1FFFFFFF)))
+        if (m_Recomp->MemoryStackPos() != (uintptr_t)(m_MMU_VM.Rdram() + (m_Reg.m_GPR[29].W[0] & 0x1FFFFFFF)))
         {
             ErrorFound = true;
         }
@@ -1552,9 +1555,9 @@ void CN64System::DumpSyncErrors(CN64System * SecondCPU)
         }
         if (bFastSP() && m_Recomp)
         {
-            if (m_Recomp->MemoryStackPos() != (uint32_t)(m_MMU_VM.Rdram() + (m_Reg.m_GPR[29].W[0] & 0x1FFFFFFF)))
+            if (m_Recomp->MemoryStackPos() != (uintptr_t)(m_MMU_VM.Rdram() + (m_Reg.m_GPR[29].W[0] & 0x1FFFFFFF)))
             {
-                Error.LogF("MemoryStack = %X  should be: %X\r\n", m_Recomp->MemoryStackPos(), (uint32_t)(m_MMU_VM.Rdram() + (m_Reg.m_GPR[29].W[0] & 0x1FFFFFFF)));
+                Error.LogF("MemoryStack = %X  should be: %X\r\n", m_Recomp->MemoryStackPos(), (uintptr_t)(m_MMU_VM.Rdram() + (m_Reg.m_GPR[29].W[0] & 0x1FFFFFFF)));
             }
         }
 
@@ -1799,7 +1802,7 @@ bool CN64System::SaveState()
         zipCloseFileInZip(file);
 
         zipClose(file, "");
-#if defined(ANDROID)
+#if defined(ANDROID) || defined(__APPLE__)
         utimes((const char *)ZipFile, NULL);
 #endif
     }

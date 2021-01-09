@@ -9,10 +9,10 @@
 *                                                                           *
 ****************************************************************************/
 #pragma once
-#include <Project64-core\N64System\Enhancement\EnhancementFile.h>
-#include <Project64-core\N64System\Enhancement\EnhancementList.h>
-#include <Common\Thread.h>
-#include <Common\CriticalSection.h>
+#include <Project64-core/N64System/Enhancement/EnhancementFile.h>
+#include <Project64-core/N64System/Enhancement/EnhancementList.h>
+#include <Common/Thread.h>
+#include <Common/CriticalSection.h>
 #include <map>
 #include <string>
 
@@ -28,7 +28,7 @@ class CEnhancements
 public:
     CEnhancements();
     ~CEnhancements();
-    
+
     void ApplyActive(CMipsMemoryVM & MMU, bool UpdateChanges);
     void ApplyGSButton(CMipsMemoryVM & MMU, bool UpdateChanges);
     void UpdateCheats(const CEnhancementList & Cheats );
@@ -74,7 +74,11 @@ private:
     static uint32_t ConvertXP64Address(uint32_t Address);
     static uint16_t ConvertXP64Value(uint16_t Value);
 
+#ifdef _WIN32
     static uint32_t stScanFileThread(void * lpThreadParameter) { ((CEnhancements *)lpThreadParameter)->ScanFileThread(); return 0; }
+#else
+  static void * stScanFileThread(void * lpThreadParameter) { ((CEnhancements *)lpThreadParameter)->ScanFileThread(); return NULL; }
+#endif
     static void stGameChanged(void * lpData) { ((CEnhancements *)lpData)->GameChanged(); }
 
     CriticalSection m_CS;

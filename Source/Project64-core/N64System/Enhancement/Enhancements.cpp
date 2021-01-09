@@ -9,13 +9,13 @@
 *                                                                           *
 ****************************************************************************/
 #include "stdafx.h"
-#include <Project64-core\N64System\Enhancement\Enhancements.h>
-#include <Project64-core\N64System\Enhancement\EnhancementFile.h>
-#include <Project64-core\N64System\Mips\MemoryVirtualMem.h>
-#include <Project64-core\N64System\Recompiler\RecompilerClass.h>
-#include <Project64-core\N64System\SystemGlobals.h>
-#include <Common\path.h>
-#include <Common\Util.h>
+#include <Project64-core/N64System/Enhancement/Enhancements.h>
+#include <Project64-core/N64System/Enhancement/EnhancementFile.h>
+#include <Project64-core/N64System/Mips/MemoryVirtualMem.h>
+#include <Project64-core/N64System/Recompiler/RecompilerClass.h>
+#include <Project64-core/N64System/SystemGlobals.h>
+#include <Common/path.h>
+#include <Common/Util.h>
 
 CEnhancements::CEnhancements() :
     m_ScanFileThread(stScanFileThread),

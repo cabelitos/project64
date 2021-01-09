@@ -751,7 +751,7 @@ bool LoopAnalysis::CheckLoopRegisterUsage(CCodeSection * Section)
             m_NextInstruction = END_BLOCK;
             SetJumpRegSet(Section, m_Reg);
         }
-        else 
+        else
         {
             switch (m_NextInstruction)
             {

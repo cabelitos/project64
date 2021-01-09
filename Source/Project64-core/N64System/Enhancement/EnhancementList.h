@@ -11,7 +11,9 @@
 #pragma once
 #include <vector>
 #include <string>
-#include <Project64-core\N64System\Enhancement\Enhancement.h>
+#include <Project64-core/N64System/Enhancement/Enhancement.h>
+#include <Common/Platform.h>
+#include <map>
 
 struct EnhancementItemList_compare
 {

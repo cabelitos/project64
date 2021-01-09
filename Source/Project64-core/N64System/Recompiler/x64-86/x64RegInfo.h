@@ -16,8 +16,6 @@
 class CX64RegInfo :
     public CRegBase
 {
-public:
-    bool operator==(const CX64RegInfo& right) const;
 };
 
 #endif

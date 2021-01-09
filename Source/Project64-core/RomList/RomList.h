@@ -10,6 +10,7 @@
 ****************************************************************************/
 #pragma once
 #include <Common/path.h>
+#include <Common/Platform.h>
 #include <Common/IniFileClass.h>
 #include <Common/StdString.h>
 #include <Common/md5.h>

@@ -9,7 +9,8 @@
 *                                                                           *
 ****************************************************************************/
 #include "stdafx.h"
-#include <Project64-core\N64System\Enhancement\EnhancementFile.h>
+#include <Project64-core/N64System/Enhancement/EnhancementFile.h>
+#include <Common/Platform.h>
 
 #pragma warning(disable:4996)
 
@@ -260,7 +261,7 @@ bool CEnhancmentFile::MoveToSection(const char * Section, bool ChangeCurrentSect
                 do
                 {
                     result = GetStringFromFile(Input, Data, MaxDataSize, DataSize, ReadPos);
-                    if (result <= 1 || strlen(CleanLine(Input)) <= 1) 
+                    if (result <= 1 || strlen(CleanLine(Input)) <= 1)
                     {
                         break;
                     }
@@ -278,7 +279,7 @@ bool CEnhancmentFile::MoveToSection(const char * Section, bool ChangeCurrentSect
                 }
             }
             else if (Pos != nullptr)
-            { 
+            {
                 char * Value = &Pos[1];
 
                 char * Pos1 = Pos - 1;
@@ -288,7 +289,7 @@ bool CEnhancmentFile::MoveToSection(const char * Section, bool ChangeCurrentSect
                 }
                 Pos1[1] = 0;
 
-                if (stricmp(Input, "Name") == 0)
+                if (_stricmp(Input, "Name") == 0)
                 {
                     m_SectionName = Value;
                 }
@@ -340,7 +341,7 @@ void CEnhancmentFile::SaveCurrentSection(void)
             if (Enhancement.CodeOptionSize() == 4)
             {
                 Section += stdstr_f("%04X %s%s", Options[i].Value, Options[i].Name.c_str(), m_LineFeed);
-            } 
+            }
             else if (Enhancement.CodeOptionSize() == 2)
             {
                 Section += stdstr_f("%02X %s%s", Options[i].Value, Options[i].Name.c_str(), m_LineFeed);
@@ -367,7 +368,7 @@ void CEnhancmentFile::SaveCurrentSection(void)
         m_File.Write(SectionName.get(), (int)strlen(SectionName.get()));
         m_CurrentSectionFilePos = m_File.GetPosition();
         m_SectionsPos.insert(FILELOC::value_type(m_CurrentSection, m_CurrentSectionFilePos));
-    } 
+    }
     else
     {
         int NeededBufferLen = Section.length();
@@ -519,9 +520,9 @@ const char * CEnhancmentFile::CleanLine(char * Line)
     //strip any spaces or line feeds from the end of the line
     for (int32_t i = (int32_t)strlen(&Line[0]) - 1; i >= 0; i--)
     {
-        if (Line[i] != ' ' && Line[i] != '\r') 
-        { 
-            break; 
+        if (Line[i] != ' ' && Line[i] != '\r')
+        {
+            break;
         }
         Line[i] = 0;
     }
