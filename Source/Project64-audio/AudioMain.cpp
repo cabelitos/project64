@@ -16,10 +16,12 @@
 #include <Common/Util.h>
 #ifdef _WIN32
 #include <Project64-audio/Driver/DirectSound.h>
+#elif __APPLE__
+#include <Project64-audio/Driver/SDLAudio.h>
 #else
 #include <Project64-audio/Driver/OpenSLES.h>
 #endif
-#include "audio_1.1.h"
+#include "Audio_1.1.h"
 #include "Version.h"
 #include <stdio.h>
 #include <string.h>
@@ -45,6 +47,8 @@ uint32_t g_Dacrate = 0, hack = 0;
 
 #ifdef _WIN32
 DirectSoundDriver * g_SoundDriver = NULL;
+#elif __APPLE__
+SDLAudio * g_SoundDriver = NULL;
 #else
 OpenSLESDriver * g_SoundDriver = NULL;
 #endif
@@ -228,6 +232,8 @@ EXPORT int32_t CALL InitiateAudio(AUDIO_INFO Audio_Info)
     g_AudioInfo = Audio_Info;
 #ifdef _WIN32
     g_SoundDriver = new DirectSoundDriver;
+#elif __APPLE__
+    g_SoundDriver = new SDLAudio;
 #else
     g_SoundDriver = new OpenSLESDriver;
 #endif
