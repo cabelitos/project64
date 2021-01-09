@@ -139,6 +139,10 @@ uint32_t CThread::GetCurrentThreadId(void)
 {
 #ifdef _WIN32
     return ::GetCurrentThreadId();
+#elif __APPLE__
+    uint64_t tid;
+    int r = pthread_threadid_np(NULL, &tid);
+    return !r ? tid : 0;
 #elif defined(SYS_gettid) || defined(__NR_gettid)
     return syscall(__NR_gettid); /* GLIBC has no implementation of gettid(). */
 #else
