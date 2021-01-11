@@ -63,6 +63,7 @@ extern "C" {
     extern PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
     extern PFNGLMULTITEXCOORD2FARBPROC glMultiTexCoord2fARB;
 #endif
+#ifndef __APPLE__
     extern PFNGLATTACHOBJECTARBPROC glAttachObjectARB;
     extern PFNGLBINDFRAMEBUFFEREXTPROC glBindFramebufferEXT;
     extern PFNGLBINDRENDERBUFFEREXTPROC glBindRenderbufferEXT;
@@ -90,6 +91,7 @@ extern "C" {
     extern PFNGLUNIFORM4FARBPROC glUniform4fARB;
     extern PFNGLUSEPROGRAMOBJECTARBPROC glUseProgramObjectARB;
     extern PFNGLGETHANDLEARBPROC glGetHandleARB;
+#endif
 }
 #endif
 

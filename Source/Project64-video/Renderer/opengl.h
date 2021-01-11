@@ -10,6 +10,8 @@ extern "C"
 #include <GLES2/gl2ext.h>
 
 typedef unsigned int     GLenum;
+#elif __APPLE__
+#include <OpenGL/gl.h>
 #else
 #include <GL/gl.h>              /* Header File For The OpenGL Library */
 #endif

@@ -10,7 +10,7 @@
 ****************************************************************************/
 #pragma once
 
-enum
+enum: short
 {
     // General Settings
     Set_vsync, Set_Rotate, Set_texenh_options, Set_wrpVRAM,
@@ -43,9 +43,9 @@ enum
     Set_ucodeLookup,
 
     //Logging Settings
-    Set_Logging_MD5, Set_Logging_Thread, Set_Logging_Path, Set_Logging_Settings, 
-    Set_Logging_Unknown, Set_Logging_Glide64, Set_Logging_Interface, Set_Logging_Resolution, 
-    Set_Logging_Glitch, Set_Logging_VideoRDP, Set_Logging_TLUT, Set_Logging_PNG, 
+    Set_Logging_MD5, Set_Logging_Thread, Set_Logging_Path, Set_Logging_Settings,
+    Set_Logging_Unknown, Set_Logging_Glide64, Set_Logging_Interface, Set_Logging_Resolution,
+    Set_Logging_Glitch, Set_Logging_VideoRDP, Set_Logging_TLUT, Set_Logging_PNG,
     Set_Logging_OGLWrapper, Set_Logging_RDPCommands,
 
 #ifdef _WIN32

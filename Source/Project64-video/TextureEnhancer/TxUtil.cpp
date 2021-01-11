@@ -15,7 +15,9 @@
 #include "TxUtil.h"
 #include "TxDbg.h"
 #include <zlib/zlib.h>
+#ifndef __APPLE__
 #include <malloc.h>
+#endif
 #include <stdlib.h>
 #include <Project64-video/Renderer/types.h>
 

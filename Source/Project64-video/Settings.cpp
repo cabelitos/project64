@@ -88,7 +88,7 @@ CSettings::CSettings() :
     m_hacks((hacks_t)0),
 
     //wrapper settings
-#ifndef ANDROID
+#ifdef _WIN32
     m_FullScreenRes(0),
 #endif
     m_RdramSize(0),
@@ -137,7 +137,7 @@ void CSettings::RegisterSettings(void)
     general_setting(Set_vsync, "vsync", true);
     general_setting(Set_texenh_options, "texenh_options", false);
     general_setting(Set_wrpVRAM, "wrpVRAM", 0);
-#ifndef ANDROID
+#ifdef _WIN32
     general_setting(Set_wrpFBO, "wrpFBO", false);
 #else
     general_setting(Set_wrpFBO, "wrpFBO", true);
@@ -197,7 +197,7 @@ void CSettings::RegisterSettings(void)
     RegisterSetting(Set_Logging_OGLWrapper, Data_DWORD_General, "OGLWrapper", "Logging", g_ModuleLogLevel[TraceOGLWrapper], NULL);
     RegisterSetting(Set_Logging_RDPCommands, Data_DWORD_General, "RDPCommands", "Logging", g_ModuleLogLevel[TraceRDPCommands], NULL);
 
-#ifndef ANDROID
+#ifdef _WIN32
     general_setting(Set_FullScreenRes, "FullScreenRes", GetCurrentResIndex());
 #endif
 
@@ -549,7 +549,7 @@ void CSettings::SetUcode(ucode_t value)
     m_ucode = value;
 }
 
-#ifndef ANDROID
+#ifdef _WIN32
 void CSettings::SetFullScreenRes(uint32_t value)
 {
     if (value != m_FullScreenRes)
@@ -563,7 +563,7 @@ void CSettings::SetFullScreenRes(uint32_t value)
 void CSettings::ReadSettings()
 {
     SetScreenRes(GetSetting(Set_Resolution));
-#ifndef ANDROID
+#ifdef _WIN32
     SetFullScreenRes(GetSetting(Set_FullScreenRes));
 #endif
     m_vsync = GetSetting(Set_vsync) != 0;
@@ -838,7 +838,7 @@ void CSettings::WriteSettings(void)
 {
     m_InWriteSettings = true;
     SetSetting(Set_Resolution, m_ScreenRes);
-#ifndef ANDROID
+#ifdef _WIN32
     SetSetting(Set_FullScreenRes, m_FullScreenRes);
 #endif
     SetSetting(Set_vsync, m_vsync ? 1 : 0);
